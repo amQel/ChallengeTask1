@@ -23,6 +23,7 @@ public class CountryService implements ICountryService {
     @Autowired
     RestTemplate restTemplate;
 
+    @Cacheable(cacheNames = { "crossingsCache" }, key = "{ #origin, #destination }")
     @Override
     public BorderCrossing getBorderCrossing(String origin, String destination) {
         GraphCountryMapper mapper = new GraphCountryMapper(getCountries());

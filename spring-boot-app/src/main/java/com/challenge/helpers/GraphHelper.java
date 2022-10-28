@@ -22,6 +22,10 @@ public class GraphHelper {
     public List<Node> dijkstra(List<List<Node>> graph, int origin, int destination) {
         this._graph = graph;
 
+        if (origin < 0 || destination < 0 || _graph.get(origin).size() == 0 || _graph.get(destination).size() == 0) {
+            return new ArrayList<Node>();
+        }
+
         initGraph(origin);
 
         while (priorityQueue.size() > 0) {
